@@ -1,0 +1,5 @@
+@font-face {
+    font-family: NotoSans;
+    font-weight: 400;
+    src: url('@/assets/fonts/Noto_Sans/NotoSansKR-Regular.otf');
+}
