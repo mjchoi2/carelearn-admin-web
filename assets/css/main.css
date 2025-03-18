@@ -5,7 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
   font-family: NotoSans;
   font-weight: 400;
@@ -13,13 +12,211 @@
   src: url('@/assets/fonts/Noto_Sans/NotoSansKR-Regular.otf');
 }
 
-.swal2-popup {padding: 1.7em 0!important; min-width: 288px;}
-.swal2-title {font-size: 17px!important; color: #000 !important; padding: 0 !important; letter-spacing: -1px;}
-.swal2-styled{background-color: rgb(255, 96, 41) !important; padding: 0.7em 0; min-width: 130px; border-radius: 500px; width: 100% !important;}
-.swal2-cancel{background-color: #6e7881 !important; padding: 0.7em 0; min-width: 130px; border-radius: 500px; width: 100% !important;}
-.swal2-popup .swal2-styled:focus { box-shadow: none !important;}
-.swal2-actions {margin: 0.8em auto 0 !important; width: 300px !important;  flex-wrap: nowrap !important;}
+@import url('https://cdn.jsdelivr.net/gh/whimsy/pretendard/dist/web/pretendard.css');
+@font-face {
+  font-family: 'Pretendard';
+  src:
+    url('/fonts/Pretendard-Regular.woff2') format('woff2'),
+    url('/fonts/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src:
+    url('/fonts/Pretendard-Regular.woff2') format('woff2'),
+    url('/fonts/Pretendard-Regular.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard';
+  src:
+    url('/fonts/Pretendard-Regular.woff2') format('woff2'),
+    url('/fonts/Pretendard-Regular.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
 
-@media screen and (max-width:480px) {
-  .swal2-title {font-size: 15px!important;}
+
+h1 {
+  width: 238px;
+  font-size: 18px;
+  padding: 0 8px;
+  font-weight: 700;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  display: inline-block;
+  font-family: 'Pretendard';
+}
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'Pretendard';
+}
+h3 {
+  font-size: 20px;
+  font-family: 'Pretendard';
+}
+h4 {
+  font-size: 18px;
+  font-family: 'Pretendard';
+}
+h5 {
+  font-size: 18px;
+  font-family: 'Pretendard';
+}
+h6 {
+  font-size: 17px;
+  font-family: 'Pretendard';
+}
+p {
+  font-size: 16px;
+  font-family: 'Pretendard';
+}
+
+.maincolor {
+  color: #2f76ff;
+}
+
+.mgtcom {
+  margin-top: 30px;
+}
+
+
+
+.downloadh2 {
+  position: relative;
+  top: -4px;
+}
+
+.downloadh2 button {
+  display: inline-flex;
+  justify-items: flex-start;
+  background: #4d4d4d;
+  color: #fff;
+  padding: 3px 9px;
+  column-gap: 5px;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+.downloadh2 button span:last-child {
+  position: relative;
+  top: -1px;
+}
+
+.downloadh2 svg {
+  width: 1rem;
+}
+
+
+/*우측*/
+.right-area {
+  overflow-x: auto;
+  width: 1500px;
+  /* background:#F6F7F9; */
+  background: #fff;
+  border-left: 1px solid #e7ecf4;
+  padding: 16px 22px 30px;
+}
+.right-area .gnb {
+  width: 100%;
+  background: #fff;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 3px; /* 상단에 고정 */
+  left: 0;
+  z-index: 9;
+  border: 1px solid #e9edf4;
+}
+
+.right-area .gnb ul {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.right-area .gnb ul li {
+  margin-left: 26px;
+}
+
+.right-area .gnb ul a {
+  padding: 15px 0 7px;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.right-area .gnb ul a.on {
+  border-bottom: 3px solid #2f76ff;
+  color: #2f76ff;
+}
+table {
+  width: 100%;
+  border-collapse: collapse; /* 테두리가 겹치지 않게 설정 */
+  background: #fff;
+  /* table-layout: fixed; */
+  margin-top: 4px;
+}
+
+.tab-com th {
+  background: #ebeff5;
+  padding: 6px 0;
+  font-weight: 400;
+}
+
+.tab-com td {
+  text-align: center;
+  border-right: 1px solid #e9edf4;
+  border-bottom: 1px solid #e9edf4;
+  padding: 8px 0;
+}
+
+.tab-com a {
+  text-decoration: underline;
+}
+
+.tab-com td:last-child {
+  border-right: none;
+}
+.swal2-popup {
+  padding: 1.7em 0 !important;
+  min-width: 288px;
+}
+.swal2-title {
+  font-size: 17px !important;
+  color: #000 !important;
+  padding: 0 !important;
+  letter-spacing: -1px;
+}
+.swal2-styled {
+  background-color: #2f76ff !important;
+  padding: 0.7em 0;
+  min-width: 130px;
+  border-radius: 500px;
+  width: 100% !important;
+}
+.swal2-cancel {
+  background-color: #6e7881 !important;
+  padding: 0.7em 0;
+  min-width: 130px;
+  border-radius: 500px;
+  width: 100% !important;
+}
+.swal2-popup .swal2-styled:focus {
+  box-shadow: none !important;
+}
+.swal2-actions {
+  margin: 0.8em auto 0 !important;
+  width: 300px !important;
+  flex-wrap: nowrap !important;
+}
+
+@media screen and (max-width: 480px) {
+  .swal2-title {
+    font-size: 15px !important;
+  }
 }
