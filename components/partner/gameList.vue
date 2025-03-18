@@ -44,15 +44,38 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="item in filteredItems" :key="item.id">
-            <td>{{ item.name }}</td>
-            <td>{{ item.elder }}</td>
-            <td>{{ item.progress }}</td>
-            <td>{{ item.time }}</td>
-            <td>지난 달 대비</td>
-            <td>지난 달 대비</td>
-            <td>{{ item.status }}</td>
-          </tr>
+          <template v-for="game in games">
+            <tr
+              v-for="(player, playerIndex) in game.players"
+              :key="playerIndex"
+            >
+              <!-- 학습명 (첫 번째 행에만 표시하고 병합) -->
+              <td v-if="playerIndex === 0" :rowspan="game.players.length">
+                {{ game.name }}
+              </td>
+              <td>난이도 {{ player.level }}</td>
+              <td>{{ player.name }}</td>
+              <td>{{ player.lastStudyDate }}</td>
+              <td>
+                <span>{{ player.currentTime }}</span>
+              </td>
+              <td>
+                <span
+                  :class="
+                    player.diffTime.startsWith('-')
+                      ? 'up text-blue-500'
+                      : 'down text-red-500'
+                  "
+                >
+                  {{ player.diffTime.startsWith('-') ? '▲' : '▼' }}
+                  {{ player.diffTime.replace('-', '') }}
+                </span>
+              </td>
+              <td>
+                <span>{{ player.prevTime }}</span>
+              </td>
+            </tr>
+          </template>
         </tbody>
       </table>
     </div>
@@ -69,39 +92,93 @@ export default {
       propsLimitData: 2,
       showData: [],
       curPage: 1,
-      items: [
+      games: [
         {
-          id: 1,
-          category: '인지',
-          name: '인지 문제 풀기',
-          elder: '김수자',
-          progress: '3/10',
-          time: '12:04',
-          updated_at: '2025-03-10 13:51:53',
-          status: '학습 중',
-          month: '2월',
+          name: '바구니 돈 담기',
+          players: [
+            {
+              name: '김수자',
+              level: 1,
+              lastStudyDate: '2024-03-16',
+              currentTime: '00:15:00',
+              diffTime: '-00:01:00',
+              prevTime: '00:16:00',
+            },
+            {
+              name: '나춘자',
+              level: 2,
+              lastStudyDate: '2024-03-05',
+              currentTime: '00:03:10',
+              diffTime: '+00:02:10',
+              prevTime: '00:01:00',
+            },
+            {
+              name: '김정일',
+              level: 1,
+              lastStudyDate: '2024-03-04',
+              currentTime: '00:00:30',
+              diffTime: '-00:00:10',
+              prevTime: '00:00:40',
+            },
+          ],
         },
         {
-          id: 2,
-          category: '인지',
-          name: '두뇌 강화 게임',
-          elder: '나숙숙자',
-          progress: '28/28',
-          time: '57:00',
-          updated_at: '2025-03-10 13:51:53',
-          status: '완료',
-          month: '2월',
+          name: '속담 맞추기',
+          players: [
+            {
+              name: '나춘자',
+              level: 1,
+              lastStudyDate: '2024-03-05',
+              currentTime: '00:03:10',
+              diffTime: '+00:02:10',
+              prevTime: '00:01:00',
+            },
+            {
+              name: '김정일',
+              level: 1,
+              lastStudyDate: '2024-03-04',
+              currentTime: '00:00:30',
+              diffTime: '-00:00:10',
+              prevTime: '00:00:40',
+            },
+          ],
         },
         {
-          id: 3,
-          category: '신체',
-          name: '기억력 테스트',
-          elder: '이한나',
-          progress: '3/10',
-          time: '13:67',
-          updated_at: '2025-03-10 13:51:53',
-          status: '학습 중',
-          month: '3월',
+          name: '그림 맞추기',
+          players: [
+            {
+              name: '나춘자',
+              level: 1,
+              lastStudyDate: '2024-03-05',
+              currentTime: '00:03:10',
+              diffTime: '+00:02:10',
+              prevTime: '00:01:00',
+            },
+            {
+              name: '김정일',
+              level: 1,
+              lastStudyDate: '2024-03-04',
+              currentTime: '00:00:30',
+              diffTime: '-00:00:10',
+              prevTime: '00:00:40',
+            },
+            {
+              name: '나춘자A',
+              level: 1,
+              lastStudyDate: '2024-03-05',
+              currentTime: '00:03:10',
+              diffTime: '+00:02:10',
+              prevTime: '00:01:00',
+            },
+            {
+              name: '나춘자B',
+              level: 1,
+              lastStudyDate: '2024-03-05',
+              currentTime: '00:03:10',
+              diffTime: '+00:02:10',
+              prevTime: '00:01:00',
+            },
+          ],
         },
       ],
     };
@@ -115,7 +192,7 @@ export default {
       selectedCategory: (state) => state.filter.selectedCategory,
     }), // filter 모듈에서 가져옴
     filteredItems() {
-      return this.items.filter((item) => item.month === this.selectedMonth);
+      return this.games.filter((item) => item.month === this.selectedMonth);
     },
   },
   mounted() {

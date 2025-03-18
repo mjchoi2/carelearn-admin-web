@@ -29,7 +29,7 @@
                 name="radio-10"
                 class="radio checked:bg-blue-500"
                 checked="checked"
-                value="complete"
+                value="완료"
                 v-model="workbookStatus"
               />
               <span class="label-text text-base">완료</span>
@@ -42,7 +42,7 @@
                 name="radio-10"
                 class="radio checked:bg-blue-500"
                 checked="checked"
-                value="inProgress"
+                value="학습 중"
                 v-model="workbookStatus"
               />
               <span class="label-text text-base">학습중</span>
@@ -116,7 +116,7 @@ export default {
           time: '12:04',
           updated_at: '2025-03-10 13:51:53',
           status: '학습 중',
-          month: '2월',
+          month: '3월',
         },
         {
           id: 2,
@@ -127,7 +127,7 @@ export default {
           time: '57:00',
           updated_at: '2025-03-10 13:51:53',
           status: '완료',
-          month: '2월',
+          month: '3월',
         },
         {
           id: 3,
@@ -152,7 +152,14 @@ export default {
       selectedCategory: (state) => state.filter.selectedCategory,
     }), // filter 모듈에서 가져옴
     filteredItems() {
-      return this.items.filter((item) => item.month === this.selectedMonth);
+      if (this.workbookStatus != 'all')
+        return this.items.filter(
+          (item) =>
+            item.month === this.selectedMonth &&
+            item.status == this.workbookStatus,
+        );
+      else
+        return this.items.filter((item) => item.month === this.selectedMonth);
     },
   },
   mounted() {

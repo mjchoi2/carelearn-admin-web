@@ -127,7 +127,6 @@
                   class="cart_check-all"
                   data-type="all"
                   value="workbook"
-                  :checked="true"
                   v-model="selectedCategory"
                 />
                 <label for="chk_all2" class="check-item-label"

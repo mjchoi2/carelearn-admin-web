@@ -72,12 +72,13 @@
 
     <!-- 스마트 워크북일때 -->
     <div v-if="selectedCategory == 'workbook'" class="relative">
-      <CommonXlsxdown></CommonXlsxdown>
+      <CommonXlsxdown reveiver="partner"></CommonXlsxdown>
       <!-- 엑셀 다운로드 기능 추가 -->
       <PartnerWorkbookList :receiver="'partner'"></PartnerWorkbookList>
     </div>
 
-    <div v-if="selectedCategory == 'game'">
+    <div v-if="selectedCategory == 'game'" class="relative">
+      <CommonXlsxdown reveiver="partner"></CommonXlsxdown>
       <PartnerGameList></PartnerGameList>
     </div>
   </div>
