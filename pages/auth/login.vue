@@ -89,7 +89,6 @@ export default {
             },
           })
           .then((res) => {
-            console.log(res);
             if (res.data.message === 'none' || res.data.message === 'befound') {
               this.$swal.fire({
                 title: '아이디, 비밀번호를 다시 확인해 주세요.',

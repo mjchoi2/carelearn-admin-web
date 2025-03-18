@@ -30,6 +30,9 @@ export default {
       Array,
       Object,
     },
+    reveiver: {
+      String,
+    },
   },
   methods: {
     downLoadXlsx() {

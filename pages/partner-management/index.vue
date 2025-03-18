@@ -60,38 +60,10 @@
             </button>
           </td>
         </tr>
-        <tr>
-          <td>2</td>
-          <td>SKN-200 RNRF2098ED</td>
-          <td>임현정</td>
-          <td>imnami</td>
-          <td>20명</td>
-          <td>2024-02-20 18:50</td>
-          <td>2024-02-20 18:50</td>
-          <td>
-            <button class="underline cursor-pointer" @click="changePartner()">
-              사용자 변경
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>SKN-200 RNRF2098ED</td>
-          <td>임현정</td>
-          <td>imnami</td>
-          <td>20명</td>
-          <td>2024-02-20 18:50</td>
-          <td>2024-02-20 18:50</td>
-          <td>
-            <button class="underline cursor-pointer" @click="changePartner()">
-              사용자 변경
-            </button>
-          </td>
-        </tr>
       </tbody>
     </table>
     <CommonPagination
-      :propsArr="seniors"
+      :propsArr="partners"
       :propsLimitData="propsLimitData"
       @update:showData="(newArr) => (showData = newArr)"
       @update:page="(newPage) => (curPage = newPage)"
@@ -108,7 +80,7 @@ export default {
   name: 'PartnerManagementIndex',
   data() {
     return {
-      propsLimitData: 1,
+      propsLimitData: 2,
       showData: [],
       isPopupOpen: false,
       isShowReg: false,
@@ -116,7 +88,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['seniors', 'selectedPartner', 'selectedSenior']),
+    ...mapState(['partners', 'seniors', 'selectedPartner', 'selectedSenior']),
   },
   created() {
     this.SET_SELECTED_PARTNER('all');
@@ -124,7 +96,6 @@ export default {
   methods: {
     ...mapMutations(['SET_SELECTED_PARTNER']),
     changePartner() {
-      console.log('changed partner');
       this.$swal.fire({
         title:
           '생활지원사를 변경하시겠습니까? \n소속된 어르신은 모두 변경된 생활지원사로 소속됩니다.',

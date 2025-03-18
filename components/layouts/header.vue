@@ -50,7 +50,6 @@ export default {
   name: 'DefaultHeader',
   methods: {
     async logout() {
-      console.log(this.$auth);
       await this.$auth.logout();
       this.$auth.fetchUser();
       this.$router.push('/auth/login');

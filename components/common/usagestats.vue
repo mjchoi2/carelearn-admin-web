@@ -109,6 +109,8 @@
                   name="chktype"
                   class="cart_check-all"
                   data-type="all"
+                  value="all"
+                  v-model="selectedCategory"
                 />
                 <label for="chk_all" class="check-item-label"
                   ><span data-v-dfdac958="" class="ek-sr-only"></span
@@ -124,6 +126,9 @@
                   name="chktype"
                   class="cart_check-all"
                   data-type="all"
+                  value="workbook"
+                  :checked="true"
+                  v-model="selectedCategory"
                 />
                 <label for="chk_all2" class="check-item-label"
                   ><span data-v-dfdac958="" class="ek-sr-only"></span
@@ -141,6 +146,8 @@
                   name="chktype"
                   class="cart_check-all"
                   data-type="all"
+                  value="game"
+                  v-model="selectedCategory"
                 />
                 <label for="chk_all3" class="check-item-label"
                   ><span data-v-dfdac958="" class="ek-sr-only"></span
@@ -172,20 +179,20 @@ export default {
     ]),
   },
   created() {
-    this.SET_CATEGORY('all');
+    // this.SET_CATEGORY('all');
     this.SET_MONTH(`${new Date().getMonth() + 1}월`);
     this.setweek();
 
     if (this.weekArr) {
       let i = 0;
-      const today = new Date('2025-03-19');
+      const today = new Date();
       while (
         (this.weekArr[i][0] && new Date(this.weekArr[i][0]) <= today) ||
         today >= new Date(this.weekArr[i][1])
       ) {
         i++;
       }
-      this.SET_WEEK(i);
+      this.SET_WEEK(0);
     }
   },
   methods: {

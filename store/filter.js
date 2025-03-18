@@ -2,7 +2,7 @@ export const state = () => ({
   selectedYear: 2025, //기본값
   selectedMonth: 1, // 기본값
   selectedWeek: 0, //기본값
-  selectedCategory: '전체', // 카테고리 (인지, 생활, 체육)
+  selectedCategory: 'all', // 카테고리 (인지, 생활, 체육)
 });
 
 export const mutations = {

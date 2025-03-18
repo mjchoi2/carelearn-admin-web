@@ -125,19 +125,17 @@ export default {
   computed: {
     ...mapState(['partners', 'seniors', 'selectedPartner', 'selectedSenior']),
   },
+  created() {
+    this.SET_SELECTED_SENIOR('all');
+  },
   methods: {
     ...mapMutations(['SET_SELECTED_PARTNER', 'SET_SELECTED_SENIOR']),
-
     getPartnerName(partnerId) {
-      console.log(partnerId);
       if (this.partners && this.partners.find((e) => e.user_id == partnerId)) {
-        console.log('e');
         const partner = this.partners.find((e) => e.user_id == partnerId);
-        return partner.name + ' 지원사';
-      }
-      // const selectedPartner = this.partners.find((e) => e.user_id == partnerId);
-      // console.log(selectedPartner);
-      return '지원사';
+        if (partner && partner.name) return partner.name + ' 지원사';
+        else return '-';
+      } else return '-';
     },
   },
 };
