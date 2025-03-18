@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/whimsy/pretendard/dist/web/pretendard.css');
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +13,6 @@
   src: url('@/assets/fonts/Noto_Sans/NotoSansKR-Regular.otf');
 }
 
-@import url('https://cdn.jsdelivr.net/gh/whimsy/pretendard/dist/web/pretendard.css');
 @font-face {
   font-family: 'Pretendard';
   src:
@@ -21,6 +21,7 @@
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Pretendard';
   src:
